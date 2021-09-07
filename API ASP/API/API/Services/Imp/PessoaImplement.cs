@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace API.Models.Imp
 {
-    class PessoaImplement : IPessoa { 
+    class PessoaImplement : IPessoa
+    {
 
         private readonly AppContext _context;
 
@@ -16,10 +17,11 @@ namespace API.Models.Imp
 
         }
 
-
-        IEnumerable<Pessoa> IPessoa.Create(Pessoa pessoa)
+        async Task<Pessoa> IPessoa.Create(Pessoa pessoa)
         {
-            throw new System.NotImplementedException();
+            _context.Pessoas.Add(pessoa);
+            await _context.SaveChangesAsync();
+            return pessoa;
         }
 
         void IPessoa.Delete(long id)
@@ -27,18 +29,17 @@ namespace API.Models.Imp
             throw new System.NotImplementedException();
         }
 
-        IEnumerable<List<Pessoa>> IPessoa.FindAll()
-        {
-            throw new System.NotImplementedException();
-
-        }
-
-        IEnumerable<Pessoa> IPessoa.FindByID(long id)
+        Task<IEnumerable<List<Pessoa>>> IPessoa.FindAll()
         {
             throw new System.NotImplementedException();
         }
 
-        IEnumerable<Pessoa> IPessoa.Update(Pessoa pessoa)
+        Task<IEnumerable<Pessoa>> IPessoa.FindByID(long id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Task<Pessoa> IPessoa.Update(Pessoa pessoa)
         {
             throw new System.NotImplementedException();
         }

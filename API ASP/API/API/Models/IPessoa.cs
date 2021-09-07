@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace API.Models
 {
-    interface IPessoa
+    interface IPessoa 
     {
 
-        IEnumerable<Pessoa> Create(Pessoa pessoa);
-        IEnumerable<Pessoa> FindByID(long id);
-        IEnumerable<List<Pessoa>> FindAll();
-        IEnumerable<Pessoa> Update(Pessoa pessoa);
+        Task<Pessoa> Create(Pessoa pessoa);
+        Task<IEnumerable<Pessoa>> FindByID(long id);
+        Task<IEnumerable<List<Pessoa>>> FindAll();
+        Task<Pessoa> Update(Pessoa pessoa);
         void Delete(long id);
 
 
